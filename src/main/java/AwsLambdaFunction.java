@@ -56,8 +56,8 @@ public class AwsLambdaFunction implements RequestHandler<S3Event, String>  {
 
         //  4. Insert DataBase
         final Properties CONNECT_PROPERTIES = new Properties();
-        CONNECT_PROPERTIES.put("user", "swingfriend");
-        CONNECT_PROPERTIES.put("password", "yfriend0429");
+        CONNECT_PROPERTIES.put("user", "DATABASE 계정");
+        CONNECT_PROPERTIES.put("password", "DATABASE 비밀번호");
         if(!insertDataBase(context, CONNECT_PROPERTIES)) return FAIL;
 
         return "SUCCESS";
@@ -168,7 +168,7 @@ public class AwsLambdaFunction implements RequestHandler<S3Event, String>  {
         //  Insert SQL문
         final String sql = "INSERT INTO proof_video(proof_id, type, length, path, image_count) VALUES(?, ?, ?, ?, ?)";
 
-        try(Connection con = DriverManager.getConnection("jdbc:mariadb://13.125.82.169:3306/swing", properties);
+        try(Connection con = DriverManager.getConnection("JDBC URL", properties);
             PreparedStatement preparedStatement = con.prepareStatement(sql)) {
 
             final String[] fileInfo = ZIP_PATH.split("/")[3].split("_");
