@@ -87,7 +87,7 @@ public class AwsLambdaFunction implements RequestHandler<S3Event, String>  {
 
             while (zipInputStream.getNextEntry() != null) {
                 //  Save File명 지정
-                saveFileName = String.format("%s/proof_img_%s", ZIP_PATH, IMG_CNT);
+                saveFileName = String.format("%s/proof_img_%s.png", ZIP_PATH, IMG_CNT);
                 //  파일마다의 ObjectMetaData 생성
                 objectMetadata = new ObjectMetadata();
                 //  InputStream To Byte Array
